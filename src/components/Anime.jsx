@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import  { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AnimeContext } from '../context/Animecontext';
 
-export default function Anime({ animes, deleteAnime, toggle }) {
+export default function Anime() {
   const [imageLoading, setImageLoading] = useState(true);
+  const{animes,toggle,deleteAnime} = useContext(AnimeContext)
 
   const handleImageLoad = () => {
     setImageLoading(false);

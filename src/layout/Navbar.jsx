@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AnimeContext } from '../context/Animecontext';
 
 export default function Navbar() {
-  const { setSearchTerm } = useContext(AnimeContext);
+  const { setSearchTerm , toggle2, toggle, mycart, toggleDarkMode} = useContext(AnimeContext);
 
   return (
     <div>

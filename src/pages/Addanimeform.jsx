@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
 import Footer from '../layout/Footer';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
-export default function Addanimeform({addAnime,toggle,toggle3}) {
+export default function Addanimeform() {
     const [rating, setRating] = useState('');
     const [title, setTitle] = useState('');
     const [episodes, setEpisodes] = useState('');
