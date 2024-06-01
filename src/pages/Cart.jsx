@@ -1,11 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../layout/Footer';
 import Swal from 'sweetalert2';
 import '../App.css'
+import { useContext } from 'react';
+import { AnimeContext } from '../context/Animecontext';
 
-export default function Cart({ mycart, removeFromCart,setMyCart, toggle2,toggle }) {
+export default function Cart() {
 
+  const {mycart, removeFromCart,toggle2, toggle, setMyCart} = useContext(AnimeContext)
   function handlePay(){
     Swal.fire({
       title: "Payment successful!",
@@ -23,7 +25,7 @@ export default function Cart({ mycart, removeFromCart,setMyCart, toggle2,toggle 
     <div className={`mt-5 ${toggle2} container mx-auto`} id='cart'>
       {mycart.length < 1 && (
         <p className='p-5 alert alert-warning'>
-         <i class="fas fa-circle-info"></i> Oops! Cart is empty. Shop around to get your items here ;D
+         <i className="fas fa-circle-info"></i> Oops! Cart is empty. Shop around to get your items here ;D
         </p>
       )}
       {mycart.length > 0 && (

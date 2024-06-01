@@ -18,50 +18,15 @@ import AnimeProvider from './context/Animecontext.jsx';
 
 
 function App() {
-  const[mycart, setMyCart] = useState([])
-  const [animes, setAnimes] = useState([])
   const [feedback, setFeedback] = useState([])
-  const [isDarkmode, setIsDarkmode] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    fetch('https://anime-store-db.onrender.com/animes')
-        .then((res) => res.json())
-        .then((res) => {
-            setAnimes(res);
-            setIsLoading(false); // Set loading to false after data is fetched
-        })
-        .catch((error) => {
-            console.error("Error fetching data: ", error);
-            setIsLoading(false); // Ensure loading is set to false even if there's an error
-        });
-}, [animes]);
+  
 
  
-function addToCart(merchandise){
-  if(!mycart.find((newguy)=> newguy.image===merchandise.image)){
-   setMyCart([...mycart,merchandise]) 
-   Swal.fire({
-    position: "top-end",
-    icon: "success",
-    title: "Item has been added to cart",
-    showConfirmButton: false,
-    timer: 900
-  });
-  }}
 
-  function removeFromCart (merchandise){
-   const newmycart = mycart.filter((newguy) => newguy.image !== merchandise.image);
-   setMyCart(newmycart);
-   Swal.fire({
-    position: "top-end",
-    icon: "success",
-    title: "Item has been removed from cart",
-    showConfirmButton: false,
-    timer: 900
-  });
-   
-  }
+
+
 
   const deleteAnime = (animeId) => {
     fetch(`https://anime-store-db.onrender.com/animes/${animeId}`, {
@@ -85,7 +50,7 @@ function addToCart(merchandise){
       },
       body: JSON.stringify(anime),
     })
-      .then((response) => response.json())
+      .then((response) => response.{ mycart, removeFromCart,setMyCart, toggle2,toggle }json())
       .then((newAnime) => {
         
         setAnimes([...animes, newAnime]);
@@ -114,12 +79,6 @@ function addToCart(merchandise){
         console.error('Error adding anime:', error);
       });
   };
-  const toggleDarkMode = () => {
-    setIsDarkmode(!isDarkmode);
-  };
-  const toggle = isDarkmode ? ' bg-dark text-white' : 'bg-light text-black'
-  const toggle2 = isDarkmode ? 'dark':'light';
-  const toggle3 = isDarkmode ? 'white': 'black'
 
   console.log(animes);
 
