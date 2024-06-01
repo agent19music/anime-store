@@ -88,7 +88,8 @@ export default function AnimeProvider({ children }) {
         toggle2,
         toggle3,
         toggleDarkMode,
-        setMyCart
+        setMyCart,
+        mycart
     };
 
     

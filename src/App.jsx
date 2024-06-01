@@ -9,13 +9,12 @@ import Swal from 'sweetalert2';
 import Feedback from './pages/Feedback.jsx';
 import './App.css';
 import Singleanime from './components/Singleanime.jsx';
-import Layout from './layout/layout.jsx';
+import Layout from './layout/Layout.jsx';
 import Home from './pages/Home.jsx';
 import Termsofservice from './pages/Termsofservice.jsx';
 import DonatePage from './pages/Donate.jsx';
 import AnimeProvider from './context/Animecontext.jsx';
-import { AnimeContext } from './context/Animecontext.jsx';
-
+import Navbar from './layout/Navbar.jsx';
 
 function App() {
   const [feedback, setFeedback] = useState([])
@@ -79,6 +78,7 @@ function App() {
     <div >
       <AnimeProvider>
       <BrowserRouter>
+      <Navbar/>
         <Routes>
           <Route path='/' element={<Layout /> } /> 
           <Route index element={<Home />} />
