@@ -1,11 +1,11 @@
-import { React, useContext } from 'react';
+import {  useContext } from 'react';
 import { Box, SimpleGrid, Skeleton, SkeletonText } from '@chakra-ui/react';
 import Anime from '../components/Anime';
 import Footer from './Footer';
 import { AnimeContext } from '../context/Animecontext';
 
-export default function Animelist({ deleteAnime, toggle }) {
-  const { isLoading, animes } = useContext(AnimeContext);
+export default function Animelist() {
+  const { isLoading, animes, deleteAnime, toggle } = useContext(AnimeContext);
 
   return (
     <div className='container'>
@@ -14,7 +14,8 @@ export default function Animelist({ deleteAnime, toggle }) {
           {Array(8).fill().map((_, index) => (
             <Box key={index} padding="6" boxShadow="lg" bg="white">
               <Skeleton height="200px" />
-              <Skeleton mt="4" height="40px" />
+              <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+              <Skeleton mt="4" height="40px" /> 
             </Box>
           ))}
         </SimpleGrid>

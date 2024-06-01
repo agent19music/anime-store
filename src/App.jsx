@@ -17,7 +17,7 @@ import Navbar from './layout/Navbar.jsx';
 function App() {
 
   return (
-    <div >
+    <div  >
       <AnimeProvider>
       <BrowserRouter>
       <Navbar/>
