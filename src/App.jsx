@@ -1,11 +1,9 @@
-import { useState, useContext } from 'react';
 import Animelist from './layout/Animelist.jsx'
 import Merchlist from './components/Merchlist.jsx';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cart from './pages/Cart.jsx';
 import Contact from './pages/Contact.jsx';
 import Addanimeform from './pages/Addanimeform.jsx';
-import Swal from 'sweetalert2';
 import Feedback from './pages/Feedback.jsx';
 import './App.css';
 import Singleanime from './components/Singleanime.jsx';
@@ -17,62 +15,6 @@ import AnimeProvider from './context/Animecontext.jsx';
 import Navbar from './layout/Navbar.jsx';
 
 function App() {
-  const [feedback, setFeedback] = useState([])
-
-
-
-  const deleteAnime = (animeId) => {
-    fetch(`https://anime-store-db.onrender.com/animes/${animeId}`, {
-      method: 'DELETE',
-    })
-      .then(() => {
-        const updatedAnimes = animes.filter((anime) => anime.id !== animeId);
-        setAnimes(updatedAnimes);
-        Swal.fire('Anime deleted!', '', 'danger');
-      })
-      .catch((error) => {
-        console.error('Error deleting anime:', error);
-      });
-  };
-
-  // const addAnime = (anime) => {
-  //   fetch('https://anime-store-db.onrender.com/animes', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(anime),
-  //   })
-  //     .then((response) => response.{ mycart, removeFromCart,setMyCart, toggle2,toggle }json())
-  //     .then((newAnime) => {
-        
-  //       setAnimes([...animes, newAnime]);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error adding anime:', error);
-  //     });
-  // };
-  
-
-  
-  const addFeedback = (comm) => {
-    fetch('https://anime-store-db.onrender.com/reviews', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(comm),
-    })
-      .then((response) => response.json())
-      .then((newFeedback) => {
-        
-        setFeedback([...feedback, newFeedback]);
-      })
-      .catch((error) => {
-        console.error('Error adding anime:', error);
-      });
-  };
-
 
   return (
     <div >

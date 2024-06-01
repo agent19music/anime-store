@@ -10,6 +10,8 @@ export default function AnimeProvider({ children }) {
     const [filteredAnimes, setFilteredAnimes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDarkmode, setIsDarkmode] = useState(true)
+    const [feedback, setFeedback] = useState([])
+
 
     const[mycart, setMyCart] = useState([])
 
@@ -76,7 +78,59 @@ export default function AnimeProvider({ children }) {
              timer: 900
            });
             
-           }    
+           }
+           
+           const deleteAnime = (animeId) => {
+            fetch(`https://anime-store-db.onrender.com/animes/${animeId}`, {
+              method: 'DELETE',
+            })
+              .then(() => {
+                const updatedAnimes = animes.filter((anime) => anime.id !== animeId);
+                setAnimes(updatedAnimes);
+                Swal.fire('Anime deleted!', '', 'danger');
+              })
+              .catch((error) => {
+                console.error('Error deleting anime:', error);
+              });
+          };
+
+     
+  const addAnime = (anime) => {
+    fetch('https://anime-store-db.onrender.com/animes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(anime),
+    })
+      .then((response) => response.{ mycart, removeFromCart,setMyCart, toggle2,toggle }json())
+      .then((newAnime) => {
+        
+        setAnimes([...animes, newAnime]);
+      })
+      .catch((error) => {
+        console.error('Error adding anime:', error);
+      });
+  }; 
+  
+  const addFeedback = (comm) => {
+    fetch('https://anime-store-db.onrender.com/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(comm),
+    })
+      .then((response) => response.json())
+      .then((newFeedback) => {
+        
+        setFeedback([...feedback, newFeedback]);
+      })
+      .catch((error) => {
+        console.error('Error adding anime:', error);
+      });
+  };
+           
 
     const contextData = {
         animes: filteredAnimes,
@@ -89,7 +143,10 @@ export default function AnimeProvider({ children }) {
         toggle3,
         toggleDarkMode,
         setMyCart,
-        mycart
+        mycart,
+        deleteAnime,
+        addAnime,
+        addFeedback,
     };
 
     
