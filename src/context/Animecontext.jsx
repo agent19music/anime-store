@@ -131,6 +131,12 @@ export default function AnimeProvider({ children }) {
         console.error('Error adding anime:', error);
       });
   };
+
+  useEffect(() => {
+    fetch('https://anime-store-db.onrender.com/reviews')
+      .then((res) => res.json())
+      .then((res) => setFeedback(res));
+  }, []);
            
 
     const contextData = {
@@ -148,6 +154,8 @@ export default function AnimeProvider({ children }) {
         deleteAnime,
         addAnime,
         addFeedback,
+        setFeedback,
+        feedback
     };
 
     

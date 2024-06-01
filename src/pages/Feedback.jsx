@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import  { useContext } from 'react';
 import Footer from '../layout/Footer'
+import { AnimeContext } from '../context/Animecontext';
+export default function Feedback() {
+  const{toggle , feedback} = useContext(AnimeContext)
 
-export default function Feedback({toggle}) {
-  const [feedback, setFeedback] = useState([]);
-
-  useEffect(() => {
-    fetch('https://anime-store-db.onrender.com/reviews')
-      .then((res) => res.json())
-      .then((res) => setFeedback(res));
-  }, []);
+  
 
   return (
     <div className="container" id='feedback'>
