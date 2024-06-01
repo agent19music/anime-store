@@ -1,0 +1,35 @@
+img:hover{
+  cursor: pointer;
+  }
+  #main-container{
+      min-height: 80vh;
+      
+  }
+  #add {
+      position: relative;
+  }
+  
+  #add h2 {
+      text-align: left;
+  }
+  
+  #add i {
+      position: absolute;
+      right: 0;
+  }
+  
+  #add i:hover{
+      cursor: pointer;
+  }
+  #cart{
+      min-height: 100vh;
+  }
+  #merch{
+      min-height: 100vh;
+  }
+  #donate{
+      min-height: 100vh;
+  }
+  #feedback{
+      min-height: 100vh;
+  }
