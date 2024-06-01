@@ -95,23 +95,24 @@ export default function AnimeProvider({ children }) {
           };
 
      
-  const addAnime = (anime) => {
-    fetch('https://anime-store-db.onrender.com/animes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(anime),
-    })
-      .then((response) => response.{ mycart, removeFromCart,setMyCart, toggle2,toggle }json())
-      .then((newAnime) => {
-        
-        setAnimes([...animes, newAnime]);
-      })
-      .catch((error) => {
-        console.error('Error adding anime:', error);
-      });
-  }; 
+        const addAnime = (anime) => {
+        fetch('https://anime-store-db.onrender.com/animes', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(anime),
+        })
+            .then((response) => response.json())
+            .then((newAnime) => {
+            
+            setAnimes([...animes, newAnime]);
+            })
+            .catch((error) => {
+            console.error('Error adding anime:', error);
+            });
+        };
+          
   
   const addFeedback = (comm) => {
     fetch('https://anime-store-db.onrender.com/reviews', {
