@@ -5,9 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AnimeContext } from '../context/Animecontext';
 
-export default function Anime() {
+export default function Anime({toggle}) {
   const [imageLoading, setImageLoading] = useState(true);
-  const { animes, toggle, deleteAnime } = useContext(AnimeContext);
+  const { animes,  deleteAnime } = useContext(AnimeContext);
   const navigate = useNavigate();
   const toast = useToast();
 

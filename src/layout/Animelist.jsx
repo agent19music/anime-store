@@ -9,7 +9,7 @@ export default function AnimeList({toggle}) {
   const { isLoading, animes, deleteAnime } = useContext(AnimeContext);
 
   return (
-    <Container maxW="container.xl" bg="green.600" p={4} className='container holder' >
+    <Container maxW="container.xl" bg="green.600" p={4} className='' >
       {isLoading ? (
         <SimpleGrid columns={[1, 2, 3]} spacing="40px">
           {Array(8).fill().map((_, index) => (

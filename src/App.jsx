@@ -14,6 +14,7 @@ import Termsofservice from './pages/Termsofservice.jsx';
 import DonatePage from './pages/Donate.jsx';
 import AnimeProvider from './context/Animecontext.jsx';
 import Navbar from './layout/Navbar.jsx';
+import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(true)
@@ -28,9 +29,11 @@ function App() {
 
   return (
     <div className={toggle}>
-      <AnimeProvider>
+    
+    <ChakraProvider>
+          <AnimeProvider>
       <BrowserRouter>
-      <Navbar/>
+      <Navbar toggleDarkMode={toggleDarkMode} toggle={toggle} toggle2={toggle2}/>
         <Routes>
           <Route path='/' element={<Layout  /> } /> 
           <Route index element={<Home />} />
@@ -52,6 +55,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       </AnimeProvider>
+      </ChakraProvider>
      
     </div>
   );

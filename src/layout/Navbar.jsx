@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AnimeContext } from '../context/Animecontext';
 
-export default function Navbar() {
-  const { setSearchTerm , toggle2, toggle, mycart, toggleDarkMode} = useContext(AnimeContext);
+export default function Navbar({ toggle2, toggle}) {
+  const { setSearchTerm , mycart, toggleDarkMode} = useContext(AnimeContext);
 
   return (
     <div>
