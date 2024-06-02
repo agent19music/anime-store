@@ -5,8 +5,8 @@ import Anime from '../components/Anime';
 import Footer from './Footer';
 import { AnimeContext } from '../context/Animecontext';
 
-export default function AnimeList() {
-  const { isLoading, animes, deleteAnime, toggle } = useContext(AnimeContext);
+export default function AnimeList({toggle}) {
+  const { isLoading, animes, deleteAnime } = useContext(AnimeContext);
 
   return (
     <Container maxW="container.xl" bg="green.600" p={4} className='container holder' >

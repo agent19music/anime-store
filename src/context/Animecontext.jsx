@@ -10,19 +10,12 @@ export default function AnimeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredAnimes, setFilteredAnimes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [isDarkmode, setIsDarkmode] = useState(true)
     const [feedback, setFeedback] = useState([])
 
 
     const[mycart, setMyCart] = useState([])
 
-     const toggle = isDarkmode ? ' bg-dark text-white' : 'bg-light text-black'
-     const toggle2 = isDarkmode ? 'dark':'light';
-     const toggle3 = isDarkmode ? 'white': 'black'
-
-     const toggleDarkMode = () => {
-      setIsDarkmode(!isDarkmode);
-      };
+    
   
 
 
@@ -146,10 +139,6 @@ export default function AnimeProvider({ children }) {
         isLoading,
         addToCart,
         removeFromCart,
-        toggle,
-        toggle2,
-        toggle3,
-        toggleDarkMode,
         setMyCart,
         mycart,
         deleteAnime,
