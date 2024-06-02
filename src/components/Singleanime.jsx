@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext} from 'react'
 import Updateanime from '../pages/Updateanime'
 import { useParams } from 'react-router-dom'
@@ -11,6 +12,7 @@ export default function Singleanime() {
     if (!selectedAnime) {
       return <div>Anime not found</div>;
     }   
+    console.log(selectedAnime);
    
   return (
     <div>

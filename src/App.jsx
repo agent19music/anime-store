@@ -1,3 +1,4 @@
+import {React, useState} from 'react';
 import Animelist from './layout/Animelist.jsx'
 import Merchlist from './components/Merchlist.jsx';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -15,23 +16,32 @@ import AnimeProvider from './context/Animecontext.jsx';
 import Navbar from './layout/Navbar.jsx';
 
 function App() {
+  const [isDarkmode, setIsDarkmode] = useState(true)
+
+  const toggleDarkMode = () => {
+    setIsDarkmode(!isDarkmode);
+  };
+  const toggle = isDarkmode ? ' bg-dark text-white' : 'bg-light text-black'
+  const toggle2 = isDarkmode ? 'dark':'light';
+  const toggle3 = isDarkmode ? 'white': 'black'
+
 
   return (
-    <div  >
+    <div className={toggle}>
       <AnimeProvider>
       <BrowserRouter>
       <Navbar/>
         <Routes>
-          <Route path='/' element={<Layout /> } /> 
+          <Route path='/' element={<Layout  /> } /> 
           <Route index element={<Home />} />
-          <Route path="/animelist" element={<Animelist />} />
-          <Route path="/cart" element={<Cart  />} />
-          <Route path="/contact" element={<Contact/>} />
-          <Route path="/animemerch/:id" element={<Merchlist />} />
-          <Route path="/addanimeform" element={<Addanimeform/>} />
-          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/animelist" element={<Animelist toggle={toggle} />} />
+          <Route path="/cart" element={<Cart toggle={toggle} toggle2={toggle2} />} />
+          <Route path="/contact" element={<Contact toggle={toggle} toggle3={toggle3}/>} />
+          <Route path="/animemerch/:id" element={<Merchlist toggle={toggle} />} />
+          <Route path="/addanimeform" element={<Addanimeform toggle={toggle} toggle3={toggle3}/>} />
+          <Route path="/feedback" element={<Feedback toggle={toggle} />} />
           <Route path="/animelist/:title" element={<Singleanime  />} />
-          <Route path="/termsofservice" element={<Termsofservice  />} />
+          <Route path="/termsofservice" element={<Termsofservice  toggle={toggle} toggle2={toggle2} toggle3={toggle3}/>} />
           <Route path="/donate" element={<DonatePage  />} />
 
 

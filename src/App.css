@@ -33,3 +33,8 @@ img:hover{
   #feedback{
       min-height: 100vh;
   }
+
+  body{
+    background-color: black;
+  }
+ 

@@ -1,25 +1,27 @@
-import  { useState, useContext } from 'react';
+import React from 'react';
+import { useState, useContext } from 'react';
+import { useToast } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AnimeContext } from '../context/Animecontext';
 
 export default function Anime() {
   const [imageLoading, setImageLoading] = useState(true);
-  const{animes,toggle,deleteAnime} = useContext(AnimeContext)
+  const { animes, toggle, deleteAnime } = useContext(AnimeContext);
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const handleImageLoad = () => {
     setImageLoading(false);
   };
 
-  const navigate = useNavigate();
-
-  function options(anime) {
+  const options = (anime) => {
     Swal.fire({
       title: "What changes are you making to this anime?",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Update",
-      denyButtonText: `Delete`
+      denyButtonText: "Delete",
     }).then((result) => {
       if (result.isConfirmed) {
         navigate(`/animelist/${anime.title}`);
@@ -31,20 +33,22 @@ export default function Anime() {
           showCancelButton: true,
           confirmButtonColor: "#d33",
           cancelButtonColor: "gray",
-          confirmButtonText: "Yes, delete it!"
+          confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
             deleteAnime(anime.id);
-            Swal.fire({
+            toast({
               title: "Deleted!",
-              text: "The anime has been deleted.",
-              icon: "success"
+              description: "The anime has been deleted.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
             });
           }
         });
       }
     });
-  }
+  };
 
   return (
     <div className='mt-5'>
